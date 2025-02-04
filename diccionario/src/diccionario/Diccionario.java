@@ -21,30 +21,41 @@ public class Diccionario {
 			switch (opp) {
 			case 1:
 				System.out.println("Introduce término:");
-				termino_introducido=entrada.next();
-				
-				entrada.nextLine();
-				
-				System.out.println("Introduce definición:");
-				definicion_introducida=entrada.nextLine();
-				
-				diccionario.add(new Palabra(termino_introducido,definicion_introducida));
-				break;
+				termino_introducido = entrada.next();
 
+				entrada.nextLine();
+
+				System.out.println("Introduce definición:");
+				definicion_introducida = entrada.nextLine();
+
+				diccionario.add(new Palabra(termino_introducido, definicion_introducida));
+				break;
 			case 2:
-				Iterator<Palabra> iter=diccionario.iterator();
-				while(iter.hasNext()) {
-					Palabra p=iter.next();
-					System.out.println("\n"+p.getTermino()+"\n");
+				Iterator<Palabra> iter = diccionario.iterator();
+				while (iter.hasNext()) {
+					Palabra p = iter.next();
+					System.out.println("\n" + p.getTermino() + "\n");
 				}
 				break;
-
 			case 3:
+				System.out.println("Introduce termino:");
+				termino_introducido = entrada.nextLine();
+				for (Palabra palabra : diccionario) {
+					if (palabra.termino.equals(termino_introducido)) {
+						System.out.println(palabra.definicion);
+					}
+				}
 				break;
-
 			case 4:
+				System.out.print("Introduce el término a eliminar: ");
+				termino_introducido = entrada.nextLine();
+				for (int i = 0; i < diccionario.size(); i++) {
+					if (diccionario.get(i).termino.equals(termino_introducido)) {
+						diccionario.remove(i);
+						System.out.println("Término eliminado");
+					}
+				}
 				break;
-
 			case 0:
 				System.out.println("Has salido del programa");
 				break;
